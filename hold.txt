@@ -1,0 +1,13 @@
+"icons": {
+        "48": "images/icon-48.png",  // add icon
+        "128": "images/icon-128.png" // add icon
+    },
+    "action": {
+        "default_icon": {
+            "16": "img/icon_16.png", // add icon
+            "32": "img/icon_32.png", // add icon
+            "64": "img/icon_64.png"  // add icon
+        },
+        "default_title": "uBlock Origin", //change
+        "default_popup": "popup-fenix.html" //change
+    },

@@ -1,0 +1,23 @@
+{
+  "name": "Ad Blocker",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "description": "A basic ad blocker to block most ads",
+  "permissions": ["declarativeNetRequest"],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ruleset_1",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ]
+}
