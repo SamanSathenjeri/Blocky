@@ -1,15 +1,34 @@
 {
-  "name": "Ad Blocker",
+  "name": "Blocky",
+  "description": "Open Source ad blocker to protect you against malicious content",
   "version": "1.0.0",
   "manifest_version": 3,
-  "description": "A basic ad blocker to block most ads",
-  "permissions": ["declarativeNetRequest"],
+  "icons": {
+    "16": "images/icon_16.png",
+    "32": "images/icon_32.png",
+    "48": "images/icon_48.png",
+    "128": "images/icon_128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "images/icon_16.png",
+      "32": "images/icon_32.png",
+      "48": "images/icon_48.png",
+      "128": "images/icon_128.png"
+    },
+    "default_title": "Blocky",
+    "default_popup": "popup/popup.html"
+  },
+  "permissions": ["storage", "declarativeNetRequest", "webNavigation", "tabs"],
+  "background": {
+    "service_worker": "background.js"
+  },
   "declarative_net_request": {
     "rule_resources": [
       {
         "id": "ruleset_1",
         "enabled": true,
-        "path": "rules.json"
+        "path": "ruleset.json"
       }
     ]
   },
