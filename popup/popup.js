@@ -1,17 +1,29 @@
 const toggleBtn = document.getElementById("toggleBtn");
 const statusIcon = document.getElementById("statusIcon");
+const statusText = document.getElementById("statusText");
 
+// Initialize UI state
 chrome.storage.local.get("blockyEnabled", (res) => {
   const enabled = res.blockyEnabled ?? true;
-  statusIcon.src = enabled ? "/images/on.jpg" : "/images/off.jpg";
-  statusText.innerText =  enabled ? "Protection is ON" : "Protection is OFF";
+  if (statusIcon) {
+    statusIcon.src = enabled ? "/images/on.jpg" : "/images/off.jpg";
+  }
+  if (statusText) {
+    statusText.innerText = enabled ? "Protection is ON" : "Protection is OFF";
+  }
 });
 
-toggleBtn.addEventListener("click", () => {
+// Toggle functionality
+toggleBtn?.addEventListener("click", () => {
   chrome.storage.local.get("blockyEnabled", (res) => {
     const enabled = !(res.blockyEnabled ?? true);
-    chrome.storage.local.set({ blockyEnabled: enabled });
-    statusIcon.src = enabled ? "/images/on.jpg" : "/images/off.jpg";
-    statusText.innerText =  enabled ? "Protection is ON" : "Protection is OFF";
+    chrome.storage.local.set({ blockyEnabled: enabled }, () => {
+      if (statusIcon) {
+        statusIcon.src = enabled ? "/images/on.jpg" : "/images/off.jpg";
+      }
+      if (statusText) {
+        statusText.innerText = enabled ? "Protection is ON" : "Protection is OFF";
+      }
+    });
   });
 });

@@ -19,7 +19,15 @@
     "default_title": "Blocky",
     "default_popup": "popup/popup.html"
   },
-  "permissions": ["storage", "declarativeNetRequest", "webNavigation", "tabs"],
+  "permissions": [
+    "storage",
+    "declarativeNetRequest",
+    "webNavigation",
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
   "background": {
     "service_worker": "background.js"
   },
@@ -36,7 +44,9 @@
     {
       "matches": ["<all_urls>"],
       "js": ["content.js"],
-      "run_at": "document_start"
+      "run_at": "document_start",
+      "all_frames": false
     }
-  ]
+  ],
+  "web_accessible_resources": []
 }
